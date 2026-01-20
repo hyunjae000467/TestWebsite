@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Hero } from './components/Hero';
 import { Features } from './components/Features';
@@ -38,6 +39,7 @@ const App: React.FC = () => {
       <footer className="bg-slate-900 border-t border-white/5 py-8">
         <Footer />
       </footer>
+      <Analytics />
       <SpeedInsights />
     </div>
   );
