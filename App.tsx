@@ -6,25 +6,37 @@ import { Preview } from './components/Preview';
 import { PreRegister } from './components/PreRegister';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { NoticePopup } from './components/NoticePopup';
 
 const App: React.FC = () => {
-  // Initialize with a random number between 3000 and 5000
   const [reservationCount, setReservationCount] = useState(0);
+  const [isNoticeOpen, setIsNoticeOpen] = useState(false);
 
   useEffect(() => {
+    // Initialize reservation count
     const randomStart = Math.floor(Math.random() * 2001) + 3000;
     setReservationCount(randomStart);
+
+    // Check if user dismissed the notice before
+    const isDismissed = localStorage.getItem('restart_notice_dismissed');
+    if (!isDismissed) {
+      // Delay slightly for better UX
+      const timer = setTimeout(() => setIsNoticeOpen(true), 1000);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   const handleRegisterClick = () => {
-    // Increment visually just before redirecting
     setReservationCount(prev => prev + 1);
     window.open("https://forms.gle/KXX4G2THL194NyTW7", "_blank");
   };
 
+  const openNotice = () => setIsNoticeOpen(true);
+  const closeNotice = () => setIsNoticeOpen(false);
+
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
+      <Navbar onNoticeClick={openNotice} />
       <main className="flex-grow">
         <Hero />
         <Features />
@@ -37,6 +49,8 @@ const App: React.FC = () => {
       <footer className="bg-slate-900 border-t border-white/5 py-8">
         <Footer />
       </footer>
+
+      {isNoticeOpen && <NoticePopup onClose={closeNotice} />}
     </div>
   );
 };
