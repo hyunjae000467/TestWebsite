@@ -20,7 +20,7 @@ const MockupCard = ({
     <div className="flex justify-between items-start mb-4">
       <div className="flex gap-2">
         <span className="px-2 py-0.5 bg-blue-50 text-blue-600 text-[10px] font-bold rounded">{badge}</span>
-        <span className="px-2 py-0.5 bg-slate-50 text-slate-400 text-[10px] font-medium rounded">{subBadge}</span>
+        {subBadge && <span className="px-2 py-0.5 bg-slate-50 text-slate-400 text-[10px] font-medium rounded">{subBadge}</span>}
       </div>
       <span className="text-[10px] text-slate-300 font-mono">{date}</span>
     </div>
@@ -68,9 +68,22 @@ export const Preview: React.FC = () => {
   return (
     <section className="py-24 bg-slate-50 border-y border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-2 mb-10">
-          <span className="w-2 h-2 rounded-full bg-blue-600"></span>
-          <h2 className="text-xl font-bold text-slate-900">최신 칼럼 피드</h2>
+        <div className="flex justify-between items-end mb-10">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-blue-600"></span>
+            <h2 className="text-xl font-bold text-slate-900">최신 칼럼 피드</h2>
+          </div>
+          <a 
+            href="https://restartmindbeta.vercel.app/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-sm font-bold text-blue-600 hover:underline flex items-center gap-1"
+          >
+            베타 버전 전체보기
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
@@ -124,8 +137,21 @@ export const Preview: React.FC = () => {
           />
         </div>
 
-        <div className="mt-16 text-center">
+        <div className="mt-16 text-center space-y-4">
           <p className="text-slate-400 text-sm">※ 위 화면은 개발 중인 서비스의 실제 구동 예시입니다.</p>
+          <div className="pt-4">
+            <a 
+              href="https://restartmindbeta.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-6 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-bold hover:bg-slate-50 hover:border-blue-300 transition-all shadow-sm gap-2"
+            >
+              <span>실제 서비스 미리보기</span>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </section>

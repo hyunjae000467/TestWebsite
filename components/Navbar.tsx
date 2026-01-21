@@ -13,7 +13,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNoticeClick }) => {
           <div className="flex items-center">
             <span className="text-2xl font-bold tracking-tighter gradient-text">RE:START</span>
           </div>
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             <button 
               onClick={onNoticeClick}
               className="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors flex items-center gap-1.5"
@@ -21,10 +21,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onNoticeClick }) => {
               <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
               공지사항
             </button>
+            <a 
+              href="https://restartmindbeta.vercel.app/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors font-bold"
+            >
+              사이트 미리보기
+            </a>
             <a href="#features" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">주요 기능</a>
             <a href="#register" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">사전 예약</a>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <button 
               onClick={onNoticeClick}
               className="md:hidden text-xs font-bold text-blue-600 px-3 py-1 bg-blue-50 rounded-full"
